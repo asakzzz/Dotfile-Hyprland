@@ -6,6 +6,7 @@ This rice has been inspired by many users on r/unixporn and youtube videos lol.
 
 Also, I use Arch btw.
 
+Tips : If you want to copy my config, the best wallpaper to use is the dark_rose.jpg in the wallpaper folder
 
 
 ## KEYBINDS : 
