@@ -16,8 +16,11 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "shared/colors.rasi"
-@import                          "shared/fonts.rasi"
+* {
+    selected: #81A1C1;
+    foreground: #D8DEE9;
+    background-alt: #3B4252;
+}
 
 /*****----- Main Window -----*****/
 window {

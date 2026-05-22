@@ -56,10 +56,10 @@ configuration {
 	}
 
 	/*---------- Window switcher settings ----------*/
-	window-match-fields: "title,class,role,name,desktop";
-	window-command: "wmctrl -i -R {window}";
-	window-format: "{w} - {c} - {t:0}";
-	window-thumbnail: false;
+	window-match-fields: "title,class";
+    window-command: "wmctrl -i -R {window}";
+    window-format: "{w} - {c} - {t}";
+    window-thumbnail: false;
 
 	/*---------- Combi settings ----------*/
 /*	combi-modi: "window,run";*/
@@ -83,7 +83,7 @@ configuration {
 
 	/*---------- Misc setting ----------*/
 	terminal: "rofi-sensible-terminal";
-	font: "Google Sans Flex 12";
+	font: "Google Sans Flex 10";
 	sort: false;
 	threads: 0;
 	click-to-exit: true;
