@@ -25,16 +25,22 @@ mkdir -p "$HOME/Downloads/Wallpapers"
 echo "--- Linking .config Directories ---"
 configs=("hypr" "kitty" "noctalia" "rofi" "fastfetch")
 
+echo "--- Linking .config Directories ---"
+configs=("hypr" "kitty" "noctalia" "rofi" "fastfetch")
+
 for config in "${configs[@]}"; do
     if [ -d "$DOTFILES_DIR/$config" ]; then
-        # 1. Remove the existing directory if it isn't already a symlink
-        if [ -d "$HOME/.config/$config" ] && [ ! -L "$HOME/.config/$config" ]; then
-            echo "Removing existing directory at ~/.config/$config"
-            sudo rm -rf "$HOME/.config/$config"
+        TARGET="$HOME/.config/$config"
+        
+        # Forcefully remove whatever is currently there (file, folder, or symlink)
+        # No sudo needed for your own home folder!
+        if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
+            echo "Cleaning up existing configuration at $TARGET"
+            rm -rf "$TARGET"
         fi
         
-        # 2. Now link it properly
-        ln -sfn "$DOTFILES_DIR/$config" "$HOME/.config/$config"
+        # Link cleanly without trailing slashes
+        ln -sf "$DOTFILES_DIR/$config" "$TARGET"
         echo "Linked $config to ~/.config/"
     fi
 done
