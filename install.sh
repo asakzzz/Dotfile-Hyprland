@@ -1,9 +1,19 @@
 #!/bin/bash
 
+
+read -p "Do you want to install GPU drivers now? (y/n): " confirm
+if [[ "$confirm" == [yY] || "$confirm" == [yY][eE][sS] ]]; then
+    
+    yay -S linux-headers nvidia-580xx-utils nvidia-580xx-dkms
+else
+    echo "Skipping drivers."
+fi
+
+
 DOTFILES_DIR=$(pwd)
 
 echo "--- Installing Packages ---"
-yay -S  --noconfirm hyprland rofi discord steam spotify noctalia-shell \
+yay -S  --noconfirm --needed rofi discord steam spotify noctalia-shell \
     docker docker-compose zen-browser-bin visual-studio-code \
     make thunar fastfetch kitty ttf-font-awesome \
     zsh
