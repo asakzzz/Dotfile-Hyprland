@@ -22,11 +22,12 @@ mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.local/share/icons"
 mkdir -p "$HOME/Downloads/Wallpapers"
 
-echo "--- Linking .config Directories ---"
-configs=("hypr" "kitty" "noctalia" "rofi" "fastfetch")
+sudo rm -rf .config/hypr
+
+mv ./hypr ~/.config/hypr
 
 echo "--- Linking .config Directories ---"
-configs=("hypr" "kitty" "noctalia" "rofi" "fastfetch")
+configs=( "kitty" "noctalia" "rofi" "fastfetch")
 
 for config in "${configs[@]}"; do
     if [ -d "$DOTFILES_DIR/$config" ]; then
