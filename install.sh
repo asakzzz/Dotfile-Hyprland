@@ -30,7 +30,7 @@ for config in "${configs[@]}"; do
         # 1. Remove the existing directory if it isn't already a symlink
         if [ -d "$HOME/.config/$config" ] && [ ! -L "$HOME/.config/$config" ]; then
             echo "Removing existing directory at ~/.config/$config"
-            rm -rf "$HOME/.config/$config"
+            sudo rm -rf "$HOME/.config/$config"
         fi
         
         # 2. Now link it properly
@@ -70,6 +70,19 @@ if [[ "$SHELL" != */zsh ]]; then
 else
     echo "Zsh is already your default shell."
 fi
+
+echo "--- Linking Home Dotfiles ---"
+home_files=(".zshrc" ".profile" ".zprofile")
+
+for file in "${home_files[@]}"; do
+    if [ -f "$DOTFILES_DIR/$file" ]; then
+        ln -sfn "$DOTFILES_DIR/$file" "$HOME/$file"
+        echo "Linked $file to $HOME/"
+    else
+        echo "Notice: $file not found in $DOTFILES_DIR, skipping."
+    fi
+done
+
 
 echo "--- Setup Complete! ---"
 echo "Remember to install your GPU drivers before rebooting."
