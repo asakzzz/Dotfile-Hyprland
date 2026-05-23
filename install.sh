@@ -17,6 +17,13 @@ configs=("hypr" "kitty" "noctalia" "rofi" "fastfetch")
 
 for config in "${configs[@]}"; do
     if [ -d "$DOTFILES_DIR/$config" ]; then
+        # 1. Remove the existing directory if it isn't already a symlink
+        if [ -d "$HOME/.config/$config" ] && [ ! -L "$HOME/.config/$config" ]; then
+            echo "Removing existing directory at ~/.config/$config"
+            rm -rf "$HOME/.config/$config"
+        fi
+        
+        # 2. Now link it properly
         ln -sfn "$DOTFILES_DIR/$config" "$HOME/.config/$config"
         echo "Linked $config to ~/.config/"
     fi
