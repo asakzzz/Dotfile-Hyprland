@@ -21,7 +21,7 @@ yay -S  --noconfirm --needed rofi discord steam spotify noctalia-shell \
 
 if [ -d "$DOTFILES_DIR/hypr" ]; then
     rm -rf --no-preserve-root ~/.config/hypr 2>/dev/null || sudo rm -rf ~/.config/hypr
-    cp -r "$DOTFILES_DIR/hypr" ~/.config/hypr
+    cp -r "$DOTFILES_DIR/hypr" ~/.config/
 else
     echo "Notice: hypr folder not found in dotfiles, skipping."
 fi
@@ -83,4 +83,3 @@ fi
 
 
 echo "--- Setup Complete! ---"
-reboot
