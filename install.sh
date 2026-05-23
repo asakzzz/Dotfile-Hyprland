@@ -43,7 +43,7 @@ done
 echo "--- Linking Assets ---"
 # Link Icons
 if [ -d "$DOTFILES_DIR/icons" ]; then
-    rm -rf "HOME/.local/share/icons/my-icons"
+    rm -rf "$HOME/.local/share/icons/my-icons"
     cp -r  "$DOTFILES_DIR/icons" "$HOME/.local/share/icons/my-icons"
     echo "Linked icons"
 fi
@@ -72,6 +72,14 @@ for file in "${home_files[@]}"; do
         echo "Notice: $file not found in $DOTFILES_DIR, skipping."
     fi
 done
+
+echo "--- Installing Oh My Zsh ---"
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    echo "Oh My Zsh installed."
+else
+    echo "Oh My Zsh already installed, skipping."
+fi
 
 
 echo "--- Setup Complete! ---"
