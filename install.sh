@@ -62,7 +62,7 @@ else
 fi
 
 echo "--- Linking Home Dotfiles ---"
-home_files=(".zshrc" ".profile" ".zprofile")
+home_files=(".zshrc" ".profile" ".zprofile , .p10k.zsh")
 
 for file in "${home_files[@]}"; do
     if [ -f "$DOTFILES_DIR/$file" ]; then
