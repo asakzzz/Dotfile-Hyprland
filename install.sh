@@ -22,9 +22,12 @@ mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.local/share/icons"
 mkdir -p "$HOME/Downloads/Wallpapers"
 
-sudo rm -rf ~/.config/hypr
-
-mv ./hypr ~/.config/hypr
+if [ -d "$DOTFILES_DIR/hypr" ]; then
+    rm -rf ~/.config/hypr
+    cp -r "$DOTFILES_DIR/hypr" ~/.config/hypr
+else
+    echo "Notice: hypr folder not found in dotfiles, skipping."
+fi
 
 echo "--- Linking .config Directories ---"
 configs=( "kitty" "noctalia" "rofi" "fastfetch")
@@ -39,18 +42,6 @@ for config in "${configs[@]}"; do
         # Use ln without -f since we just cleared the path
         ln -s "$DOTFILES_DIR/$config" "$TARGET"
         echo "Linked $config to ~/.config/"
-    fi
-done
-
-echo "--- Linking Home Dotfiles ---"
-home_files=(".zshrc" ".profile" ".zprofile")
-
-for file in "${home_files[@]}"; do
-    if [ -f "$DOTFILES_DIR/zsh/$file" ]; then
-        ln -sfn "$DOTFILES_DIR/zsh/$file" "$HOME/$file"
-        echo "Linked $file to $HOME/"
-    else
-        echo "Notice: $file not found in $DOTFILES_DIR/zsh/, skipping."
     fi
 done
 
