@@ -22,7 +22,7 @@ mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.local/share/icons"
 mkdir -p "$HOME/Downloads/Wallpapers"
 
-sudo rm -rf .config/hypr
+sudo rm -rf ~/.config/hypr
 
 mv ./hypr ~/.config/hypr
 
