@@ -75,4 +75,4 @@ done
 
 
 echo "--- Setup Complete! ---"
-echo "Remember to install your GPU drivers before rebooting."
+reboot
