@@ -31,16 +31,12 @@ configs=("hypr" "kitty" "noctalia" "rofi" "fastfetch")
 for config in "${configs[@]}"; do
     if [ -d "$DOTFILES_DIR/$config" ]; then
         TARGET="$HOME/.config/$config"
-        
-        # Forcefully remove whatever is currently there (file, folder, or symlink)
-        # No sudo needed for your own home folder!
-        if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
-            echo "Cleaning up existing configuration at $TARGET"
-            rm -rf "$TARGET"
-        fi
-        
-        # Link cleanly without trailing slashes
-        ln -sf "$DOTFILES_DIR/$config" "$TARGET"
+
+        # Remove target whether it's a file, folder, or symlink
+        rm -rf "$TARGET"
+
+        # Use ln without -f since we just cleared the path
+        ln -s "$DOTFILES_DIR/$config" "$TARGET"
         echo "Linked $config to ~/.config/"
     fi
 done
