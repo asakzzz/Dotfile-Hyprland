@@ -18,12 +18,9 @@ yay -S  --noconfirm --needed rofi discord steam spotify noctalia-shell \
     make thunar fastfetch kitty ttf-font-awesome \
     zsh
 
-mkdir -p "$HOME/.config"
-mkdir -p "$HOME/.local/share/icons"
-mkdir -p "$HOME/Downloads/Wallpapers"
 
 if [ -d "$DOTFILES_DIR/hypr" ]; then
-    rm -rf ~/.config/hypr
+    sudo rm -rf ~/.config/hypr
     cp -r "$DOTFILES_DIR/hypr" ~/.config/hypr
 else
     echo "Notice: hypr folder not found in dotfiles, skipping."
@@ -38,7 +35,7 @@ for config in "${configs[@]}"; do
 
         rm -rf "$TARGET"
 
-        cp -r"$DOTFILES_DIR/$config" "$TARGET"
+        cp -r "$DOTFILES_DIR/$config" "$TARGET"
         echo "copied $config to ~/.config/"
     fi
 done
@@ -46,13 +43,14 @@ done
 echo "--- Linking Assets ---"
 # Link Icons
 if [ -d "$DOTFILES_DIR/icons" ]; then
+    rm -rf "HOME/.local/share/icons/my-icons"
     cp -r  "$DOTFILES_DIR/icons" "$HOME/.local/share/icons/my-icons"
     echo "Linked icons"
 fi
 
 if [ -d "$DOTFILES_DIR/Wallpapers" ]; then
-    cp -r  "$DOTFILES_DIR/Wallpapers" "$HOME/Downloads/Wallpapers"
-    echo "Linked Wallpapers"
+    rm -rf "$HOME/Downloads/Wallpapers"
+    cp -r "$DOTFILES_DIR/Wallpapers" "$HOME/Downloads/Wallpapers"
 fi
 
 echo "--- Setting Zsh as Default Shell ---"
