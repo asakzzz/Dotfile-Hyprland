@@ -14,9 +14,8 @@ DOTFILES_DIR=$(pwd)
 
 echo "--- Installing Packages ---"
 yay -S  --noconfirm --needed rofi discord steam spotify noctalia-shell \
-    docker docker-compose zen-browser-bin visual-studio-code \
-    make thunar fastfetch kitty ttf-font-awesome \
-    zsh
+    docker docker-compose zen-browser-bin visual-studio-code 
+    make thunar fastfetch kitty zsh
 
 
 if [ -d "$DOTFILES_DIR/hypr" ]; then
@@ -41,12 +40,6 @@ for config in "${configs[@]}"; do
 done
 
 echo "--- Linking Assets ---"
-# Link Icons
-if [ -d "$DOTFILES_DIR/icons" ]; then
-    rm -rf "$HOME/.local/share/icons/my-icons"
-    cp -r  "$DOTFILES_DIR/icons" "$HOME/.local/share/icons/my-icons"
-    echo "Linked icons"
-fi
 
 if [ -d "$DOTFILES_DIR/Wallpapers" ]; then
     rm -rf "$HOME/Downloads/Wallpapers"

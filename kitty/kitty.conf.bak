@@ -1,10 +1,9 @@
-font_family Google Sans Flex
+#font_family Google Sans Flex
 font_size 13
 
 disable_ligature no
 enable_audio_bell no
 
-shell zsh
 shell_integration disable
 shell_integration no-cursor
 
@@ -13,7 +12,7 @@ cursor_shape block
 remember_window_size no
 window_padding_width 25
 
-background_opacity 0.85
+background_opacity 0.95
 scrollbar_handle_opacity 0
 scrollbar_track_opacity 0
 scrollbar_track_hover_opacity 0
@@ -22,46 +21,52 @@ confirm_os_window_close 0
 sync_to_monitor no
 
 # Kitty Color Theme - Lighter Rainy Forest
-background            #1a241e
-foreground            #dce6dc
-cursor                #8ca07a
-selection_background  #2d3b32
-selection_foreground  #ffffff
+# background            #1a241e
+# foreground            #dce6dc
+# cursor                #8ca07a
+# selection_background  #2d3b32
+# selection_foreground  #ffffff
 
 # Black
-color0 #1a241e
-color8 #2d3b32
+# color0 #1a241e
+# color8 #2d3b32
 
 # Red (Soft Earth)
-color1 #6b5252
-color9 #8c6b6b
+# color1 #6b5252
+# color9 #8c6b6b
 
 # Green (Lush Moss)
-color2  #547a5f
-color10 #7ba689
+# color2  #547a5f
+# color10 #7ba689
 
 # Yellow (Sage)
-color3  #8ca07a
-color11 #a9c296
+# color3  #8ca07a
+# color11 #a9c296
 
 # Blue (Distant Fog)
-color4  #56696b
-color12 #738a8c
+# color4  #56696b
+# color12 #738a8c
 
 # Magenta (Rosewood)
-color5  #695264
-color13 #8a6c84
+# color5  #695264
+# color13 #8a6c84
 
 # Cyan (Cool Mist)
-color6  #7ba19b
-color14 #9cc2bd
+# color6  #7ba19b
+# color14 #9cc2bd
 
 # White
-color7  #dce6dc
-color15 #f0f5f0
+# color7  #dce6dc
+# color15 #f0f5f0
 
 cursor_trail 10
 cursor_trail_start_threshold 0
 cursor_trail_decay 0.01 0.08
 cursor_shape block
 cursor_blink true
+
+
+# BEGIN_KITTY_THEME
+# Noctalia
+include current-theme.conf
+# END_KITTY_THEME
